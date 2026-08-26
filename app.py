@@ -20,16 +20,133 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    .stApp {background: #f6faf8; color: #17352d;}
-    [data-testid="stSidebar"] {background: #e8f3ef;}
-    [data-testid="stMetric"] {
-        background: #ffffff;
-        border: 1px solid #d8e8e2;
-        border-radius: 16px;
-        padding: 14px;
+    :root {
+        --ink: #132b35;
+        --muted: #58717a;
+        --mist: #eef5f6;
+        --cloud: #dce8eb;
+        --rain: #7896a3;
+        --storm: #233e4b;
     }
-    h1, h2, h3 {color: #17352d; letter-spacing: -0.02em;}
+    .stApp {
+        background:
+            radial-gradient(circle at 10% 8%, rgba(167, 194, 201, .30), transparent 28rem),
+            linear-gradient(180deg, #edf4f5 0%, #f8fbfb 42%, #eef5f3 100%);
+        color: var(--ink);
+    }
+    .block-container {
+        max-width: 1320px;
+        padding-top: 1.8rem;
+        padding-bottom: 4rem;
+    }
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #dce8eb 0%, #edf4f3 100%);
+        border-right: 1px solid rgba(63, 91, 101, .12);
+    }
+    [data-testid="stMetric"] {
+        background: rgba(255, 255, 255, .82);
+        border: 1px solid rgba(104, 139, 149, .22);
+        border-radius: 20px;
+        padding: 18px;
+        box-shadow: 0 14px 40px rgba(42, 70, 80, .08);
+        backdrop-filter: blur(12px);
+    }
+    [data-testid="stMetricLabel"] {color: var(--muted);}
+    [data-testid="stMetricValue"] {color: var(--ink);}
+    h1, h2, h3 {color: var(--ink); letter-spacing: -0.03em;}
     .stButton button {border-radius: 999px;}
+    .weather-hero {
+        min-height: 370px;
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        overflow: hidden;
+        border-radius: 28px;
+        margin-bottom: 1.5rem;
+        background-image:
+            linear-gradient(90deg, rgba(8, 24, 34, .88) 0%, rgba(18, 38, 49, .60) 45%, rgba(24, 42, 51, .20) 100%),
+            linear-gradient(180deg, rgba(21, 41, 50, .06) 0%, rgba(7, 22, 31, .70) 100%),
+            url("https://images.unsplash.com/photo-1492011221367-f47e3ccd77a0?auto=format&fit=crop&fm=jpg&q=84&w=2200");
+        background-position: center 48%;
+        background-size: cover;
+        box-shadow: 0 28px 70px rgba(22, 46, 58, .24);
+    }
+    .weather-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(110deg, transparent 58%, rgba(202, 226, 231, .13));
+        pointer-events: none;
+    }
+    .hero-copy {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+        padding: clamp(2rem, 6vw, 4.5rem);
+        color: #f5fafb;
+    }
+    .weather-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: .55rem;
+        margin-bottom: 1.1rem;
+        padding: .5rem .8rem;
+        border: 1px solid rgba(231, 244, 247, .35);
+        border-radius: 999px;
+        background: rgba(224, 239, 242, .11);
+        color: #dcebef;
+        font-size: .76rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        backdrop-filter: blur(12px);
+    }
+    .hero-copy h1 {
+        margin: 0;
+        color: #ffffff;
+        font-size: clamp(2.7rem, 6vw, 5.4rem);
+        line-height: .94;
+        letter-spacing: -.055em;
+    }
+    .hero-copy p {
+        max-width: 600px;
+        margin: 1.25rem 0 0;
+        color: #e1edf0;
+        font-size: clamp(1rem, 1.7vw, 1.24rem);
+        line-height: 1.6;
+    }
+    .photo-credit {
+        margin: -.8rem 0 1.6rem;
+        color: #71878f;
+        font-size: .72rem;
+        text-align: right;
+    }
+    .photo-credit a {color: #5d7781 !important;}
+    .stTabs [data-baseweb="tab-list"] {
+        gap: .45rem;
+        padding: .4rem;
+        border-radius: 18px;
+        background: rgba(214, 228, 232, .60);
+    }
+    .stTabs [data-baseweb="tab"] {
+        border-radius: 13px;
+        padding: .45rem .9rem;
+    }
+    .stTabs [aria-selected="true"] {
+        background: rgba(255, 255, 255, .92);
+        color: var(--storm);
+    }
+    .stDataFrame {
+        border: 1px solid rgba(104, 139, 149, .18);
+        border-radius: 18px;
+        overflow: hidden;
+    }
+    @media (max-width: 700px) {
+        .block-container {padding-top: .8rem;}
+        .weather-hero {min-height: 440px; border-radius: 22px;}
+        .hero-copy {padding: 2rem 1.4rem;}
+        .photo-credit {text-align: left;}
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -185,9 +302,20 @@ def asset_narrative(row: pd.Series, medians: pd.Series) -> str:
     )
 
 
-st.title("Climate Risk Copilot")
-st.caption(
-    "Portfolio fragility detection, anomaly review and climate shock simulation."
+st.markdown(
+    """
+    <section class="weather-hero">
+        <div class="hero-copy">
+            <div class="weather-kicker">Storm exposure intelligence</div>
+            <h1>Climate Risk<br>Copilot</h1>
+            <p>See where the portfolio is fragile before the next climate shock arrives.</p>
+        </div>
+    </section>
+    <div class="photo-credit">
+        Storm photograph by <a href="https://unsplash.com/@davidmoum" target="_blank">David Moum</a> on Unsplash
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 
 uploaded_file = st.sidebar.file_uploader("Upload project CSV", type="csv")
@@ -438,4 +566,3 @@ with actions_tab:
         use_container_width=True,
         hide_index=True,
     )
-
