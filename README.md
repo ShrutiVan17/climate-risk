@@ -26,7 +26,7 @@ The original analysis covered **1,080 records**. Its regression benchmark achiev
 
 1. Load the prepared project dataset.
 2. Standardize the model features.
-3. identify four portfolio risk segments.
+3. Identify four portfolio risk segments.
 4. Detect anomalous assets and predict fragility bands.
 5. Apply event, hazard and duration stress multipliers.
 6. Rank assets for review and portfolio action.
@@ -71,4 +71,3 @@ Python · pandas · NumPy · scikit-learn · Streamlit · Matplotlib
 - Model outputs support prioritization and scenario exploration; they are not financial advice.
 - Segment names are analytical interpretations of the four learned clusters.
 - Fixed random seeds make the model results reproducible for a given dataset.
-
