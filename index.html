@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Climate Risk Copilot — portfolio climate fragility analysis and scenario stress testing by Shruti Vanparia.">
+  <meta name="theme-color" content="#102732">
+  <title>Climate Risk Copilot | Shruti Vanparia</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <a class="wordmark" href="#top" aria-label="Climate Risk Copilot home">
+      <span class="wordmark-mark" aria-hidden="true"></span>
+      Climate Risk Copilot
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#overview">Overview</a>
+      <a href="#scenario">Scenario lab</a>
+      <a href="#method">Method</a>
+      <a class="nav-cta" href="https://github.com/ShrutiVan17/climate-risk" target="_blank" rel="noreferrer">View repository</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-weather" aria-hidden="true">
+        <span class="weather-line line-one"></span>
+        <span class="weather-line line-two"></span>
+        <span class="weather-line line-three"></span>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> Portfolio climate intelligence</p>
+        <h1 id="hero-title">See the risk<br>before the storm.</h1>
+        <p class="hero-copy">A decision workspace that detects fragile assets, reveals hidden exposure and tests how a portfolio responds when climate pressure rises.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#overview">Explore the analysis</a>
+          <a class="text-link" href="https://github.com/ShrutiVan17/climate-risk/blob/main/app.py" target="_blank" rel="noreferrer">Open the application code <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-proof" aria-label="Project highlights">
+        <div><strong>1,080</strong><span>records analyzed</span></div>
+        <div><strong>0.919</strong><span>model R²</span></div>
+        <div><strong>4</strong><span>risk groups</span></div>
+      </div>
+      <p class="image-credit">Photo: <a href="https://unsplash.com/@davidmoum" target="_blank" rel="noreferrer">David Moum</a> / Unsplash</p>
+    </section>
+
+    <section class="intro section" id="overview">
+      <div class="section-heading">
+        <p class="eyebrow dark"><span></span> Portfolio overview</p>
+        <h2>From scattered climate signals to a clear review queue.</h2>
+      </div>
+      <p class="section-lede">The project combines classification, clustering, anomaly detection and scenario modeling so a portfolio team can move from exposure data to prioritized action.</p>
+
+      <div class="metric-grid">
+        <article class="metric-card featured">
+          <p>Model performance</p>
+          <strong>91.9<span>%</span></strong>
+          <div class="meter"><i style="width:91.9%"></i></div>
+          <small>R² 0.919 · MAE 4.81 · RMSE 7.26</small>
+        </article>
+        <article class="metric-card">
+          <p>Low risk</p>
+          <strong>630</strong>
+          <small>58.3% of records</small>
+        </article>
+        <article class="metric-card">
+          <p>Emerging risk</p>
+          <strong>234</strong>
+          <small>21.7% of records</small>
+        </article>
+        <article class="metric-card">
+          <p>High + critical</p>
+          <strong>216</strong>
+          <small>20.0% of records</small>
+        </article>
+      </div>
+
+      <div class="risk-panel">
+        <div class="risk-copy">
+          <p class="panel-label">Risk distribution</p>
+          <h3>Most assets are stable. The tail still matters.</h3>
+          <p>One in five records falls into the high or critical groups, creating a focused population for deeper review and scenario testing.</p>
+          <div class="legend" aria-label="Risk group legend">
+            <span><i class="low"></i>Low</span>
+            <span><i class="emerging"></i>Emerging</span>
+            <span><i class="high"></i>High</span>
+            <span><i class="critical"></i>Critical</span>
+          </div>
+        </div>
+        <div class="distribution" role="img" aria-label="Risk distribution: 630 low, 234 emerging, 90 high and 126 critical records">
+          <div class="bar-row"><span>Low</span><div><i class="low" style="width:100%"></i></div><strong>630</strong></div>
+          <div class="bar-row"><span>Emerging</span><div><i class="emerging" style="width:37.1%"></i></div><strong>234</strong></div>
+          <div class="bar-row"><span>High</span><div><i class="high" style="width:14.3%"></i></div><strong>90</strong></div>
+          <div class="bar-row"><span>Critical</span><div><i class="critical" style="width:20%"></i></div><strong>126</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="storm-break" aria-label="Supercell storm over a rural landscape">
+      <div class="storm-break-copy">
+        <p class="eyebrow"><span></span> Scenario thinking</p>
+        <blockquote>Risk is not a fixed score. It changes as the weather, exposure and portfolio concentration change.</blockquote>
+      </div>
+      <p class="image-credit">Photo: <a href="https://unsplash.com/@steve_g_" target="_blank" rel="noreferrer">Steve Gribble</a> / Unsplash</p>
+    </section>
+
+    <section class="scenario section" id="scenario">
+      <div class="section-heading compact">
+        <p class="eyebrow dark"><span></span> Scenario lab</p>
+        <h2>Turn up the climate pressure.</h2>
+      </div>
+      <p class="section-lede">Adjust the three shock drivers used by the application. This preview shows relative scenario intensity; portfolio results are calculated inside the Python model with the project dataset.</p>
+
+      <div class="scenario-shell">
+        <div class="controls">
+          <label for="events">
+            <span>Climate events</span>
+            <output id="events-value">1.25×</output>
+          </label>
+          <input id="events" type="range" min="0.8" max="2" value="1.25" step="0.05">
+
+          <label for="hazard">
+            <span>Hazard severity</span>
+            <output id="hazard-value">1.20×</output>
+          </label>
+          <input id="hazard" type="range" min="0.8" max="2" value="1.20" step="0.05">
+
+          <label for="duration">
+            <span>Event duration</span>
+            <output id="duration-value">1.30×</output>
+          </label>
+          <input id="duration" type="range" min="0.8" max="2" value="1.30" step="0.05">
+        </div>
+
+        <div class="scenario-result" aria-live="polite">
+          <div class="gauge" id="gauge">
+            <div class="gauge-core">
+              <span>Relative intensity</span>
+              <strong id="intensity">25</strong>
+              <small id="intensity-label">Elevated</small>
+            </div>
+          </div>
+          <p id="scenario-note">A moderate shock with event duration contributing the strongest lift.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="method section" id="method">
+      <div class="section-heading">
+        <p class="eyebrow dark"><span></span> Model workflow</p>
+        <h2>Four techniques. One practical decision flow.</h2>
+      </div>
+      <div class="method-grid">
+        <article><span>01</span><h3>Classify</h3><p>Random Forest predicts each asset's fragility band and confidence.</p></article>
+        <article><span>02</span><h3>Segment</h3><p>K-Means groups similar exposure patterns into four portfolio personas.</p></article>
+        <article><span>03</span><h3>Detect</h3><p>Isolation Forest surfaces unusual records that may contain hidden tail risk.</p></article>
+        <article><span>04</span><h3>Stress</h3><p>The scenario engine combines events, hazards, duration and portfolio weight.</p></article>
+      </div>
+    </section>
+
+    <section class="closing section">
+      <p class="eyebrow"><span></span> Built by Shruti Vanparia</p>
+      <h2>Climate exposure made visible, comparable and actionable.</h2>
+      <div class="closing-actions">
+        <a class="button button-light" href="https://github.com/ShrutiVan17/climate-risk" target="_blank" rel="noreferrer">Explore the repository</a>
+        <a class="text-link" href="https://github.com/ShrutiVan17" target="_blank" rel="noreferrer">View GitHub profile <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Climate Risk Copilot</span>
+    <span>Python · scikit-learn · Streamlit</span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
